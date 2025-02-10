@@ -1,0 +1,17 @@
+{
+    "flagAlt": "Deutsch",
+    "Profil-text": "Klicke, um dich einzuloggen",
+    "nav": {
+        "accueil": "Startseite",
+        "classements": "Rangfolge",
+        "aide": "Hilfe"
+    },
+    "footer": {
+        "accessibilite": "Zugänglichkeit: nicht konform",
+        "mentions": "Rechtliche Hinweise",
+        "donnees": "Persönliche Daten",
+        "cgu": "Allgemeine Nutzungsbedingungen",
+        "cookies": "Verwaltung von Cookies",
+        "plan": "Seitenübersicht"
+    }
+}

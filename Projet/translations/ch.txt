@@ -1,0 +1,17 @@
+{
+    "flagAlt": "中文",
+    "Profil-text": "点击连接",
+    "nav": {
+        "accueil": "首页",
+        "classements": "排名",
+        "aide": "帮助"
+    },
+    "footer": {
+        "accessibilite": "无障碍环境：不符合要求",
+        "mentions": "法律信息",
+        "donnees": "个人资料",
+        "cgu": "使用条款和条件",
+        "cookies": "曲奇管理层",
+        "plan": "网站地图"
+    }
+}

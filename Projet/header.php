@@ -1,19 +1,28 @@
 <header class="main-header">
-</div>
 <nav class="navbar">
         <div class="logo">test!</div>
         <div class="menu">
-            <a id=accueil href="#">accueil</a>
-            <a id=classements href="#">classements</a>
-            <a id= aide href="#">aide</a>
+            <a id="accueil" href="#"></a>
+            <a id="classements" href="#"></a>
+            <a id="aide" href="#"></a>
         </div>
         <div class="icons">
             <div class="flag">
-                <button onclick="changeLanguage()" class="lang-button"><img id="flag" src="./img/flag/fr.png" alt="Langue"></button>
-
+                <button id="lang-button" class="lang-button">
+                <img id="flag" src="#" alt="Langue">
+                </button>
+                <div id="lang-dropdown" class="dropdown-menu hidden">
+                <img class="lang-option" data-lang="fr" src="./img/flag/fr.png" alt="Français">
+                <img class="lang-option" data-lang="en" src="./img/flag/en.png" alt="English">
+                <img class="lang-option" data-lang="es" src="./img/flag/es.png" alt="Espagnol">
+                <img class="lang-option" data-lang="de" src="./img/flag/de.png" alt="Deutsch">
+                <img class="lang-option" data-lang="ch" src="./img/flag/ch.png" alt="中文">
             </div>
+        </div>
             <div class="profile">
-               <button onclick="seconnecter()" class="profile-button"><img src="./img/profil.png" alt="Profil"></button>
+                <button onclick="seconnecter()" class="profile-button">
+                    <img id="profile" src="./img/profil.png" alt="Profil">
+                </button>
             </div>
         </div>
     </nav>

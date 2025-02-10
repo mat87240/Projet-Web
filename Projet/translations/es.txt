@@ -1,0 +1,17 @@
+{
+    "flagAlt": "Espagnol",
+    "Profil-text": "Haga clic para conectar",
+    "nav": {
+        "accueil": "Inicio",
+        "classements": "clasificación",
+        "aide": "Ayuda"
+    },
+    "footer": {
+        "accessibilite": "Accesibilidad: No conforme",
+        "mentions": "Aviso legal",
+        "donnees": "Datos personales",
+        "cgu": "Términos y condiciones de uso",
+        "cookies": "Gestión de cookies",
+        "plan": "Mapa del sitio"
+    }
+}

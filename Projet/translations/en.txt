@@ -1,0 +1,17 @@
+{
+    "flagAlt": "English",
+    "Profil-text": "Click to log in",
+    "nav": {
+        "accueil": "Home",
+        "classements": "Ranking",
+        "aide": "Help"
+    },
+    "footer": {
+        "accessibilite": "Accessibility: non-compliant",
+        "mentions": "Legal notice",
+        "donnees": "Personal data",
+        "cgu": "Terms of Use",
+        "cookies": "Cookie management",
+        "plan": "Site map"
+    }
+}

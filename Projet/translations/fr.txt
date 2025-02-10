@@ -1,0 +1,17 @@
+{
+    "flagAlt": "Français",
+    "Profil-text": "Clique pour te connecter",
+    "nav": {
+        "accueil": "Accueil",
+        "classements": "Classement",
+        "aide": "Aide"
+    },
+    "footer": {
+        "accessibilite": "Accessibilité : non conforme",
+        "mentions": "Mentions légales",
+        "donnees": "Données personnelles",
+        "cgu": "Conditions Générales d'Utilisation",
+        "cookies": "Gestion des cookies",
+        "plan": "Plan du site"
+    }
+}
