@@ -35,6 +35,12 @@ function updatePageContent(translations) {
         if (element) element.textContent = translations.nav[id];
     });
 
+    // Mise à jour du form
+    Object.keys(translations.form).forEach(id => {
+        let element = document.getElementById(id);
+        if (element) element.textContent = translations.form[id];
+    });
+
     // Mise à jour des éléments du footer
     const footerLinks = [
         "accessibilite",

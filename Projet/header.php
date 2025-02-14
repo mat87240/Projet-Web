@@ -19,28 +19,53 @@
                 <img class="lang-option" data-lang="ch" src="./img/flag/ch.png" alt="中文">
             </div>
         </div>
-            <div class="profile">
-                <button onclick="seconnecter()" class="profile-button">
-                    <img id="profile" src="./img/profil.png" alt="Profil">
-                </button>
-            </div>
-        </div>
-    </nav>
-    <div class="popup" id="popup-Form">
-        <form index="/index.php" class="form-container">
-            <h2>Veuillez vous connecter</h2>
+        <div class="profile">
+    <button id="profile-button" class="profile-button">
+        <img id="profile" src="./img/profil.png" alt="Profil">
+    </button>
+</div>
+</nav>
+<link rel="stylesheet" href="./css/popup.css">
+<script src="./js/popup.js"></script>
+
+<div class="login-popup">
+    <div class="popup" id="popup-Form-login">
+        <form action="./index.php" class="form-container">
+            <h2 id="message-login"></h2>
             <label for="email">
-                <strong>E-mail/Pseudo</strong>
+                <strong id="msg-email"></strong>
             </label>
-            <input type="text" placeholder="Votre Email/Pseudo" name="email" required />
+            <input type="text" name="email" required />
             <label for="psw">
-                <strong>Mot de passe</strong>
+                <strong id="msg-psw-login"></strong>
             </label>
-            <input type="password" placeholder="Votre mot de passe" name="psw" required />
-            <button type="submit" class="btn">Se connecter</button>
-            <button type="submit" class="btn cancel" onclick="closeForm()">Annuler</button>
+            <input type="password" name="psw" required />
+            <button type="submit" class="btn" id="connect-button"></button>
+            <button type="button" class="btn cancel" id="cancel-button"></button>
+            <h3 class="register-msg" id="register-msg">pas encore de compte ? clique ici pour le crée</h3>
+            
         </form>
     </div>
+    <div class="popup" id="popup-Form-register" style="display: none;">
+    <form action="./index.php" class="form-container">
+        <h2>Créer un compte</h2>
+        <label for="username">
+            <strong>Nom d'utilisateur</strong>
+        </label>
+        <input type="text" name="username" required />
+        <label for="email">
+            <strong id="msg-email-register"></strong>
+        </label>
+        <input type="email" name="email" required />
+        <label for="psw">
+            <strong id="msg-psw-register"></strong>
+        </label>
+        <input type="password" name="psw" required />
+        <button type="submit" class="btn">S'inscrire</button>
+    </form>
+</div>
+
+</div>
 </header>
 
 

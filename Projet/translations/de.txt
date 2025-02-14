@@ -6,6 +6,15 @@
         "classements": "Rangfolge",
         "aide": "Hilfe"
     },
+    "form": {
+        "message-login": "Bitte loggen Sie sich ein",
+        "msg-email": "E-Mail/Nutzername",
+        "msg-email-register": "E-Mail",
+        "msg-psw-login": "Passwort",
+        "msg-psw-register": "Passwort",
+        "connect-button" : "Sich anmelden",
+        "cancel-button" : "Abbrechen"
+    },
     "footer": {
         "accessibilite": "Zugänglichkeit: nicht konform",
         "mentions": "Rechtliche Hinweise",

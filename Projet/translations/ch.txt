@@ -6,6 +6,15 @@
         "classements": "排名",
         "aide": "帮助"
     },
+    "form": {
+        "message-login": "请登陆",
+        "msg-email": "电子邮件/用户名",
+        "msg-email-register": "电子邮件",
+        "msg-psw-login": "密碼",
+        "msg-psw-register": "密碼",
+        "connect-button" : "登录",
+        "cancel-button" : "取消"
+    },
     "footer": {
         "accessibilite": "无障碍环境：不符合要求",
         "mentions": "法律信息",
