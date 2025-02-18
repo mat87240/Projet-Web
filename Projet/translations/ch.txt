@@ -13,10 +13,13 @@
         "msg-psw-login": "密碼",
         "msg-psw-register": "密碼",
         "connect-button" : "登录",
-        "cancel-button" : "取消"
+        "cancel-button" : "取消",
+        "message-register": "创建账户",  
+        "register-msg": "还没有账户？点击这里创建",  
+        "user-name": "用户名",  
+        "sub-button": "注册"  
     },
     "footer": {
-        "accessibilite": "无障碍环境：不符合要求",
         "mentions": "法律信息",
         "donnees": "个人资料",
         "cgu": "使用条款和条件",

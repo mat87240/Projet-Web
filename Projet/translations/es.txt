@@ -13,10 +13,13 @@
         "msg-psw-login": "Contraseña",
         "msg-psw-register": "Contraseña",
         "connect-button" : "Entrar",
-        "cancel-button" : "Cancelar"
+        "cancel-button" : "Cancelar",
+        "message-register": "Crear una cuenta",  
+        "register-msg": "¿Aún no tienes cuenta? Haz clic aquí para crearla",  
+        "user-name": "Nombre de usuario",  
+        "sub-button": "Registrarse"  
     },
     "footer": {
-        "accessibilite": "Accesibilidad: No conforme",
         "mentions": "Aviso legal",
         "donnees": "Datos personales",
         "cgu": "Términos y condiciones de uso",

@@ -8,19 +8,45 @@
     },
     "form": {
         "message-login": "Veuillez vous connecter",
+        "message-register": "Créer un compte",
+        "register-msg": "Pas encore de compte ? Clique ici pour le créer",
+        "user-name": "Nom d'utilisateur",
+        "sub-button": "S'inscrire",
         "msg-email": "E-mail/Pseudo",
         "msg-email-register": "E-mail",
         "msg-psw-login": "Mot de passe",
         "msg-psw-register": "Mot de passe",
-        "connect-button" : "Se connecter",
-        "cancel-button" : "Annuler"  
+        "connect-button": "Se connecter",
+        "cancel-button": "Annuler"
     },
     "footer": {
-        "accessibilite": "Accessibilité : non conforme",
         "mentions": "Mentions légales",
         "donnees": "Données personnelles",
         "cgu": "Conditions Générales d'Utilisation",
         "cookies": "Gestion des cookies",
         "plan": "Plan du site"
+    },
+    "mentions_legal": {
+        "title": "Mentions Légales",
+        "title1": "Mentions Légales",
+        "last_update": "Dernière mise à jour :",
+        "editor": "1. Éditeur du site",
+        "company_name": "Nom de l'entreprise : [Nom de l'entreprise]",
+        "address": "Adresse :",
+        "siret": "Numéro SIRET :",
+        "email": "Email :",
+        "hosting": "2. Hébergement",
+        "host": "Hébergeur :",
+        "host_address": "Adresse :",
+        "intellectual_property": "3. Propriété intellectuelle",
+        "intellectual_text": "Tous les contenus présents sur ce site sont protégés par le droit d'auteur.",
+        "data_protection": "4. Protection des données personnelles",
+        "data_text": "Vous pouvez demander la modification ou la suppression de vos données personnelles.",
+        "cookies": "5. Cookies",
+        "cookies_text": "Ce site utilise des cookies pour améliorer l’expérience utilisateur.",
+        "responsibility": "6. Responsabilité",
+        "responsibility_text": "Nous ne garantissons pas l'exactitude des informations présentes sur ce site.",
+        "law": "7. Droit applicable",
+        "law_text": "Les présentes mentions légales sont régies par le droit français."
     }
 }

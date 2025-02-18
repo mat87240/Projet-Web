@@ -55,7 +55,30 @@ function updatePageContent(translations) {
         let element = document.getElementById(`footer-${id}`);
         if (element) element.textContent = translations.footer[id];
     });
+
+    // **Ajout spécifique pour les mentions légales**
+    const mentionsLegal = translations.mentions_legal;
+
+    if (mentionsLegal) {
+        // Mise à jour du titre des mentions légales
+        let titleElement = document.getElementById("title");
+        if (titleElement) titleElement.textContent = mentionsLegal.title;
+
+        // Dernière mise à jour
+        let lastUpdateElement = document.getElementById("last_update");
+        if (lastUpdateElement) lastUpdateElement.textContent = `${mentionsLegal.last_update} 01/01/2025`; // Date à ajuster dynamiquement
+
+        // Mise à jour des sections des mentions légales
+        Object.keys(mentionsLegal).forEach(key => {
+            if (key === "title" || key === "last_update") return; // Ignore les éléments non liés au contenu dynamique
+            let element = document.getElementById(key);
+            if (element) {
+                element.textContent = mentionsLegal[key];
+            }
+        });
+    }
 }
+
 
 // Fonction pour changer la langue
 function changeLanguage(lang) {
