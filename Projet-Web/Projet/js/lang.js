@@ -4,7 +4,7 @@ let isDropdownOpen = false; // État du menu déroulant (ouvert ou fermé)
 // Fonction pour charger les traductions depuis un fichier JSON
 async function loadTranslations(lang) {
     try {
-        const response = await fetch(`translations/${lang}.txt`);
+        const response = await fetch(`http://localhost/website/Projet-Web/Projet/translations/${lang}.txt`);
         if (!response.ok) throw new Error("Erreur de chargement du fichier");
 
         const data = await response.text();
@@ -19,7 +19,7 @@ async function loadTranslations(lang) {
 // Fonction pour mettre à jour les éléments de la page avec les nouvelles traductions
 function updatePageContent(translations) {
     document.getElementById("flag").alt = translations.flagAlt;
-    document.getElementById("flag").src = `./img/flag/${currentLang}.png`;
+    document.getElementById("flag").src = `http://localhost/website/Projet-Web/Projet/img/flag/${currentLang}.png`;
 
     // Si le menu déroulant est ouvert, ne pas mettre à jour la propriété --flag
     if (!isDropdownOpen) {
@@ -56,24 +56,50 @@ function updatePageContent(translations) {
         if (element) element.textContent = translations.footer[id];
     });
 
-    // **Ajout spécifique pour les mentions légales**
+    // **Ajout spécifique pour les mentions légales & CGU**
     const mentionsLegal = translations.mentions_legal;
+    const Conditionutil = translations.CGU;
+    const donnee = translations.donnee_perso;
 
     if (mentionsLegal) {
         // Mise à jour du titre des mentions légales
         let titleElement = document.getElementById("title");
         if (titleElement) titleElement.textContent = mentionsLegal.title;
 
-        // Dernière mise à jour
-        let lastUpdateElement = document.getElementById("last_update");
-        if (lastUpdateElement) lastUpdateElement.textContent = `${mentionsLegal.last_update} 01/01/2025`; // Date à ajuster dynamiquement
-
         // Mise à jour des sections des mentions légales
         Object.keys(mentionsLegal).forEach(key => {
-            if (key === "title" || key === "last_update") return; // Ignore les éléments non liés au contenu dynamique
+            if (key === "title") return; // Ignore les éléments non liés au contenu dynamique
             let element = document.getElementById(key);
             if (element) {
                 element.textContent = mentionsLegal[key];
+            }
+        });
+    }
+    if (Conditionutil) {
+        // Mise à jour du titre des mentions légales
+        let titleElement = document.getElementById("title");
+        if (titleElement) titleElement.textContent = Conditionutil.title;
+
+        // Mise à jour des sections des mentions légales
+        Object.keys(Conditionutil).forEach(key => {
+            if (key === "title") return; // Ignore les éléments non liés au contenu dynamique
+            let element = document.getElementById(key);
+            if (element) {
+                element.textContent = Conditionutil[key];
+            }
+        });
+    }
+    if (donnee) {
+        // Mise à jour du titre des mentions légales
+        let titleElement = document.getElementById("title");
+        if (titleElement) titleElement.textContent = donnee.title;
+
+        // Mise à jour des sections des mentions légales
+        Object.keys(donnee).forEach(key => {
+            if (key === "title") return; // Ignore les éléments non liés au contenu dynamique
+            let element = document.getElementById(key);
+            if (element) {
+                element.textContent = donnee[key];
             }
         });
     }
@@ -84,8 +110,10 @@ function updatePageContent(translations) {
 function changeLanguage(lang) {
     currentLang = lang;
     loadTranslations(currentLang);
+    localStorage.setItem('currentLang', lang); // Sauvegarde la langue dans le localStorage
     toggleDropdown(false); // Ferme le menu après la sélection
 }
+
 
 // Fonction pour ouvrir ou fermer le menu déroulant
 function toggleDropdown(forceClose = null) {
@@ -112,7 +140,10 @@ function toggleDropdown(forceClose = null) {
 
 // Ajout des événements après le chargement du DOM
 document.addEventListener("DOMContentLoaded", () => {
-    loadTranslations(currentLang); // Charger la langue par défaut
+    const storedLang = localStorage.getItem('currentLang'); // Récupère la langue stockée
+    currentLang = storedLang || "fr"; // Si aucune langue n'est stockée, utilise "fr" par défaut
+
+    loadTranslations(currentLang); // Charger la langue
 
     const langButton = document.getElementById("lang-button");
     const dropdown = document.getElementById("lang-dropdown");
