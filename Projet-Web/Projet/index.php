@@ -13,6 +13,5 @@
 <?php include BASE_PATH . "header/header.php"; ?>
   <p>contenu page</p>
 <?php include BASE_PATH . "footer/footer.php" ?>
-  
 </body>
 </html>

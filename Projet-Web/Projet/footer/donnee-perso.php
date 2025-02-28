@@ -13,39 +13,43 @@
 </head>
 <body>
 <?php include BASE_PATH . "header/header.php"; ?>
-    
-    <h1 id="don_title1"></h1>
-    <p><strong id="don_last_update"></strong></p>
-    
+
+<h1 id="don_title1"></h1>
+<p><strong id="don_last_update"></strong></p>
+
+<!-- Container des sections -->
+<div class="sections-wrapper">
     <div class="section">
         <h2 id="don_data_collection"></h2>
         <p id="don_data_collection_text"></p>
     </div>
-    
+
     <div class="section">
         <h2 id="don_data_usage"></h2>
         <p id="don_data_usage_text"></p>
     </div>
-    
+
     <div class="section">
         <h2 id="don_data_protection"></h2>
         <p id="don_data_protection_text"></p>
     </div>
-    
+
     <div class="section">
         <h2 id="don_rights"></h2>
         <p id="don_rights_text"></p>
     </div>
-    
+
     <div class="section">
         <h2 id="don_contact"></h2>
         <p id="don_contact_text"></p>
     </div>
-    
-    <div id="scrollTopContainer">
-        <button id="scrollTopBtn"></button>
-    </div>
-    
+</div>
+
+<!-- Bouton de scroll en haut -->
+<div id="scrollTopContainer">
+    <button id="scrollTopBtn"></button>
+</div>
+
 <?php include BASE_PATH . "footer/footer.php"; ?>
 </body>
 </html>

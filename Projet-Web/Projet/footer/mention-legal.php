@@ -17,48 +17,53 @@
 <h1 id="mentions_title1"></h1>
 <p><strong id="mentions_last_update"></strong></p>
 
-<div class="section">
-    <h2 id="mentions_editor"></h2>
-    <p ><strong id="mentions_company_name"></strong></p>
-    <p><strong id="mentions_address"></strong></p>
-    <p><strong id="mentions_siret"></strong></p>
-    <p><strong id="mentions_email"></strong> <a href="mailto:email@example.com">email@example.com</a></p>
+<!-- Container des sections -->
+<div class="sections-wrapper">
+    <div class="section">
+        <h2 id="mentions_editor"></h2>
+        <p ><strong id="mentions_company_name"></strong></p>
+        <p><strong id="mentions_address"></strong></p>
+        <p><strong id="mentions_siret"></strong></p>
+        <p><strong id="mentions_email"></strong> <a href="mailto:email@example.com">email@example.com</a></p>
+    </div>
+
+    <div class="section">
+        <h2 id="mentions_hosting"></h2>
+        <p><strong id="mentions_host"></strong></p>
+        <p><strong id="mentions_host_address"></strong></p>
+    </div>
+
+    <div class="section">
+        <h2 id="mentions_intellectual_property"></h2>
+        <p id="mentions_intellectual_text"></p>
+    </div>
+
+    <div class="section">
+        <h2 id="mentions_data_protection"></h2>
+        <p id="mentions_data_text"></p>
+    </div>
+
+    <div class="section">
+        <h2 id="mentions_cookies"></h2>
+        <p id="mentions_cookies_text"></p>
+    </div>
+
+    <div class="section">
+        <h2 id="mentions_responsibility"></h2>
+        <p id="mentions_responsibility_text"></p>
+    </div>
+
+    <div class="section">
+        <h2 id="mentions_law"></h2>
+        <p id="mentions_law_text"></p>
+    </div>
 </div>
 
-<div class="section">
-    <h2 id="mentions_hosting"></h2>
-    <p><strong id="mentions_host"></strong></p>
-    <p><strong id="mentions_host_address"></strong></p>
-</div>
-
-<div class="section">
-    <h2 id="mentions_intellectual_property"></h2>
-    <p id="mentions_intellectual_text"></p>
-</div>
-
-<div class="section">
-    <h2 id="mentions_data_protection"></h2>
-    <p id="mentions_data_text"></p>
-</div>
-
-<div class="section">
-    <h2 id="mentions_cookies"></h2>
-    <p id="mentions_cookies_text"></p>
-</div>
-
-<div class="section">
-    <h2 id="mentions_responsibility"></h2>
-    <p id="mentions_responsibility_text"></p>
-</div>
-
-<div class="section">
-    <h2 id="mentions_law"></h2>
-    <p id="mentions_law_text"></p>
-</div>
-
+<!-- Bouton de scroll en haut -->
 <div id="scrollTopContainer">
     <button id="scrollTopBtn"></button>
-    </div>
+</div>
 
 <?php include BASE_PATH . "footer/footer.php" ?>
 </body>
+</html>

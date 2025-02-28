@@ -16,36 +16,40 @@
 
     <h1 id="cgu_title1"></h1>
     <p><strong id="cgu_last_update"></strong></p>
-    
-    <div class="section">
-        <h2 id="cgu_intro_title"></h2>
-        <p id="cgu_intro_text"></p>
-    </div>
-    
-    <div class="section">
-        <h2 id="cgu_access_title"></h2>
-        <p id="cgu_access_text"></p>
-    </div>
-    
-    <div class="section">
-        <h2 id="cgu_responsibility_title"></h2>
-        <p id="cgu_responsibility_text"></p>
-    </div>
-    
-    <div class="section">
-        <h2 id="cgu_ip_title"></h2>
-        <p id="cgu_ip_text"></p>
-    </div>
-    
-    <div class="section">
-        <h2 id="cgu_modifications_title"></h2>
-        <p id="cgu_modifications_text"></p>
-    </div>
-    <div id="scrollTopContainer">
-    <button id="scrollTopBtn"></button>
+
+    <!-- Conteneur pour les sections -->
+    <div class="sections-wrapper">
+        <div class="section">
+            <h2 id="cgu_intro_title"></h2>
+            <p id="cgu_intro_text"></p>
+        </div>
+
+        <div class="section">
+            <h2 id="cgu_access_title"></h2>
+            <p id="cgu_access_text"></p>
+        </div>
+
+        <div class="section">
+            <h2 id="cgu_responsibility_title"></h2>
+            <p id="cgu_responsibility_text"></p>
+        </div>
+
+        <div class="section">
+            <h2 id="cgu_ip_title"></h2>
+            <p id="cgu_ip_text"></p>
+        </div>
+
+        <div class="section">
+            <h2 id="cgu_modifications_title"></h2>
+            <p id="cgu_modifications_text"></p>
+        </div>
     </div>
 
-    
+    <!-- Bouton scroll vers le haut -->
+    <div id="scrollTopContainer">
+        <button id="scrollTopBtn"></button>
+    </div>
+
     <?php include BASE_PATH . "footer/footer.php"; ?>
 </body>
 </html>

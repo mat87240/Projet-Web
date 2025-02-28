@@ -81,5 +81,17 @@
         "don_contact": "Contact",
         "don_contact_text": "Pour toute question concernant vos données personnelles, veuillez nous contacter à l'adresse suivante : support@exemple.com",
         "scrollTopBtn": "↑ Retour en haut"
+    },
+    "messages": {
+        "login_success": "Connexion réussie",
+        "login_error": "utilisateur ou mot de passe incorrect",
+        "missing_data": "il manque des informations",
+        "register_succes": "Utilisateur enregistré avec succès",
+        "register_error": "Erreur lors de l'enregistrement",
+        "register_empty": "Les champs ne peuvent pas être vides",
+        "method_not_allowed": "Méthode non autorisée",
+        "email_use" : "cette email est deja utiliser",
+        "username_use" : "ce nom d'utilisateur est deja utiliser",
+        "email_invalide" : "adresse mail invalide"
     }
 }

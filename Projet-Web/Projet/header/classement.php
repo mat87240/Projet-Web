@@ -7,14 +7,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="title"></title>
-    <link rel="stylesheet" href="css/index.css">
     <script src="js/lang.js" defer></script>
+    <link rel="stylesheet" href="css/classement.css">
+    
 </head>
 
+
 <body>
-    <?php include BASE_PATH . "header/header.php"; ?>
+<?php include BASE_PATH . "header/header.php"; ?>
+<div class="leader">
     <main class="leaderboard">
-        <link re="stylesheet" href="css/classement.css">
         <h1>Classement des Joueurs</h1>
         <div class="header-boxes">
             <div>Rang</div>
@@ -37,6 +39,7 @@
             <div>#score3</div>
         </div>
     </main>
+</div>
 
     <?php include BASE_PATH . "footer/footer.php" ?>
 </body>

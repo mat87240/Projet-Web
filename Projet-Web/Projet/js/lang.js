@@ -11,6 +11,7 @@ async function loadTranslations(lang) {
         const translations = JSON.parse(data);
 
         updatePageContent(translations);
+        showMessageFromURL(translations); // Affiche les messages traduits
     } catch (error) {
         console.error("Erreur lors du chargement des traductions :", error);
     }
@@ -105,6 +106,39 @@ function updatePageContent(translations) {
     }
 }
 
+// Fonction pour afficher un message sous forme de popup depuis l'URL
+function showMessageFromURL(translations) {
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const messageKey = urlParams.get('message'); // Récupère la clé du message
+
+    if (messageKey && translations.messages[messageKey]) {
+        const popup = document.createElement('div');
+        popup.classList.add('popup_url');
+
+        popup.innerHTML = `
+            <div class="popup_url_content">
+                <p>${translations.messages[messageKey]}</p>
+                <button id="close_popup_url">OK</button>
+            </div>
+        `;
+        document.body.appendChild(popup);
+
+        document.getElementById('close_popup_url').addEventListener('click', () => {
+            popup.remove();
+            removeUrlParam('message');
+        });
+    }
+}
+
+
+// Fonction pour supprimer le paramètre message de l'URL
+function removeUrlParam(param) {
+    const url = new URL(window.location);
+    url.searchParams.delete(param);  // Supprimer le paramètre "message"
+    window.history.replaceState({}, document.title, url.toString());  // Met à jour l'URL sans recharger la page
+}
+
 
 // Fonction pour changer la langue
 function changeLanguage(lang) {
@@ -113,7 +147,6 @@ function changeLanguage(lang) {
     localStorage.setItem('currentLang', lang); // Sauvegarde la langue dans le localStorage
     toggleDropdown(false); // Ferme le menu après la sélection
 }
-
 
 // Fonction pour ouvrir ou fermer le menu déroulant
 function toggleDropdown(forceClose = null) {
@@ -142,6 +175,7 @@ function toggleDropdown(forceClose = null) {
 document.addEventListener("DOMContentLoaded", () => {
     const storedLang = localStorage.getItem('currentLang'); // Récupère la langue stockée
     currentLang = storedLang || "fr"; // Si aucune langue n'est stockée, utilise "fr" par défaut
+
 
     loadTranslations(currentLang); // Charger la langue
 

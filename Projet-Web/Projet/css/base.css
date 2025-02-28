@@ -1,17 +1,29 @@
 @import "scrollTop.css";
-
+@import "popup.css";
 
 /* ============================
-   #         Header           #
+   #         Global Layout      #
    ============================ */
-   body {
+
+/* Utilisation de flexbox pour le corps */
+body {
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Colonne pour disposer header, main et footer */
+    min-height: 100vh; /* Assure que le body prend toute la hauteur de la page */
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
 
-/* Header */
+/* Section principale pour le contenu */
+main {
+    flex-grow: 1; /* Permet à main de s'étendre pour remplir l'espace disponible */
+}
+
+/* ============================
+   #         Header           #
+   ============================ */
 header {
     background-color: #1a1a2e;
     padding: 0;
@@ -109,7 +121,6 @@ header {
     content: none;
 }
 
-
 /* Profile */
 .profile {
     position: relative;
@@ -169,17 +180,16 @@ header {
     transform: scale(1.1);
 }
 
-
-
 /* ============================
-   #         footer           #
+   #         Footer           #
    ============================ */
 
-   footer {
+footer {
     background-color: #1a1a2e;
     color: white;
     padding: 20px 0;
     text-align: center;
+    margin-top: auto; /* Cette propriété garantit que le footer se place en bas */
 }
 
 .footer-container {
