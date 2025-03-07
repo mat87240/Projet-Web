@@ -38,6 +38,16 @@
             <div>#pseudo3</div>
             <div>#score3</div>
         </div>
+        <div class="player-card">
+            <div>4</div>
+            <div>#pseudo4</div>
+            <div>#score4</div>
+        </div>
+        <div class="player-card">
+            <div>5</div>
+            <div>#pseudo5</div>
+            <div>#score5</div>
+        </div>
     </main>
 </div>
 

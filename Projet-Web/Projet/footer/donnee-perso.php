@@ -41,7 +41,7 @@
 
     <div class="section">
         <h2 id="don_contact"></h2>
-        <p id="don_contact_text"></p>
+        <p><d id="don_contact_text"></d><a href="mailto:contact@TaperTapezTaper.com">contact@TaperTapezTaper.com</a></p>
     </div>
 </div>
 

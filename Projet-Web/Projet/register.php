@@ -1,4 +1,7 @@
 <?php
+// Démarrer un tampon de sortie pour éviter les problèmes d'envoi de contenu avant les headers
+ob_start();
+
 include_once "config.php";
 
 header("Content-Type: application/json");
@@ -34,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: index.php?message=email_use");
             exit;
         }
+        $checkEmail->close();
 
         // Vérifier si le nom d'utilisateur existe déjà
         $checkUsername = $conn->prepare("SELECT id FROM users WHERE username = ?");
@@ -46,8 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: index.php?message=username_use");
             exit;
         }
-
-        $checkEmail->close();
         $checkUsername->close();
 
         // Hachage sécurisé du mot de passe
@@ -56,28 +58,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Insérer l'utilisateur dans la base de données
         $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $username, $email, $hashedPassword);
+        
 
-        if ($stmt->execute()) {
-            http_response_code(201); // Code 201 : Created
-            header("Location: index.php?message=register_succes");
-            exit;
+        // Effectuer l'insertion dans la base de données
+            if ($stmt->execute() === true) {
+                header("Location: index.php?message=register_succes");
+                exit;
         } else {
-            http_response_code(500);
             header("Location: index.php?message=register_error");
             exit;
         }
-
         $stmt->close();
     } else {
-        http_response_code(400);
         header("Location: index.php?message=register_empty");
         exit;
     }
 } else {
-    http_response_code(405);
     header("Location: index.php?message=method_not_allowed");
     exit;
 }
 
 $conn->close();
+
+// Nettoyer et envoyer le tampon de sortie
+ob_end_flush();
 ?>

@@ -3,11 +3,11 @@
 
 <header class="main-header">
     <nav class="navbar">
-        <div class="logo">test!</div>
+        <div class="logo">TaperTapezTaper!</div>
         <div class="menu">
             <a id="accueil" href="index.php"></a>
             <a id="classements" href="header/classement.php"></a>
-            <a id="aide" href="#"></a>
+            <a id="aide" href="header/aide.php"></a>
         </div>
         <div class="icons">
             <div class="flag">
@@ -30,6 +30,7 @@
     </nav>
     <link rel="stylesheet" href="css/popup.css">
     <script src="js/popup.js"></script>
+    <script src="js/gestion-compte.js"></script>
 
     <!-- Popup de Connexion -->
     <div class="login-popup">
@@ -66,8 +67,16 @@
                     <strong id="msg-psw-register"></strong>
                 </label>
                 <input type="password" name="psw" required />
-                <button type="submit" class="btn" id="sub-button" name="register">S'inscrire</button> <!-- Bouton 'S'inscrire' -->
+                <button type="submit" class="btn" id="sub-button" name="register"></button>
             </form>
+        </div>
+        <!-- Popup de Compte (lorsque connecté) -->
+        <div class="popup" id="popup-Form-account" style="display: none;">
+            <div class="form-container">
+                <h2 ><d id=Bienvenue></d> <span id="user-name-display"></span></h2>
+                <button class="btn" id="account-button"></button>
+                <button class="btn cancel" id="logout-button"></button>
+            </div>
         </div>
     </div>
 </header>

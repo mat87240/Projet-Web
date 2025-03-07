@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     ];
                     
                     $jwt = generate_jwt($payload, SECRET_KEY);
+                    setcookie("session_token", $jwt, time() + 604800, "/");
                     header("Location: index.php?message=login_success");
                     exit;
                 } else {

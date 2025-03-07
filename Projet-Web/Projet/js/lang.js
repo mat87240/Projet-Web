@@ -1,7 +1,29 @@
 let currentLang = "fr"; // Langue par défaut
-let isDropdownOpen = false; // État du menu déroulant (ouvert ou fermé)
+let isDropdownOpen = false; // État du menu déroulant
 
-// Fonction pour charger les traductions depuis un fichier JSON
+// ✅ Fonction pour créer un cookie
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        let date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+}
+
+// ✅ Fonction pour récupérer un cookie
+function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+// ✅ Fonction pour charger les traductions
 async function loadTranslations(lang) {
     try {
         const response = await fetch(`http://localhost/website/Projet-Web/Projet/translations/${lang}.txt`);
@@ -11,99 +33,49 @@ async function loadTranslations(lang) {
         const translations = JSON.parse(data);
 
         updatePageContent(translations);
-        showMessageFromURL(translations); // Affiche les messages traduits
+        showMessageFromURL(translations);
     } catch (error) {
         console.error("Erreur lors du chargement des traductions :", error);
     }
 }
 
-// Fonction pour mettre à jour les éléments de la page avec les nouvelles traductions
+// ✅ Fonction pour mettre à jour les éléments de la page avec les traductions
 function updatePageContent(translations) {
     document.getElementById("flag").alt = translations.flagAlt;
     document.getElementById("flag").src = `http://localhost/website/Projet-Web/Projet/img/flag/${currentLang}.png`;
 
-    // Si le menu déroulant est ouvert, ne pas mettre à jour la propriété --flag
     if (!isDropdownOpen) {
         document.documentElement.style.setProperty("--flag", `"${translations.flagAlt}"`);
     }
 
-    // Mise à jour des variables CSS pour les tooltips
-    document.documentElement.style.setProperty("--Profil-text", `"${translations["Profil-text"]}"`);
-
-    // Mise à jour de la navigation
     Object.keys(translations.nav).forEach(id => {
         let element = document.getElementById(id);
         if (element) element.textContent = translations.nav[id];
     });
 
-    // Mise à jour du form
     Object.keys(translations.form).forEach(id => {
         let element = document.getElementById(id);
         if (element) element.textContent = translations.form[id];
     });
 
-    // Mise à jour des éléments du footer
-    const footerLinks = [
-        "accessibilite",
-        "mentions",
-        "donnees",
-        "cgu",
-        "cookies",
-        "plan"
-    ];
-
-    footerLinks.forEach(id => {
+    ["accessibilite", "mentions", "donnees", "cgu", "cookies", "plan"].forEach(id => {
         let element = document.getElementById(`footer-${id}`);
         if (element) element.textContent = translations.footer[id];
     });
 
-    // **Ajout spécifique pour les mentions légales & CGU**
-    const mentionsLegal = translations.mentions_legal;
-    const Conditionutil = translations.CGU;
-    const donnee = translations.donnee_perso;
+    ["mentions_legal", "CGU", "donnee_perso", "plan_site"].forEach(section => {
+        if (translations[section]) {
+            let titleElement = document.getElementById("title");
+            if (titleElement) titleElement.textContent = translations[section].title;
 
-    if (mentionsLegal) {
-        // Mise à jour du titre des mentions légales
-        let titleElement = document.getElementById("title");
-        if (titleElement) titleElement.textContent = mentionsLegal.title;
-
-        // Mise à jour des sections des mentions légales
-        Object.keys(mentionsLegal).forEach(key => {
-            if (key === "title") return; // Ignore les éléments non liés au contenu dynamique
-            let element = document.getElementById(key);
-            if (element) {
-                element.textContent = mentionsLegal[key];
-            }
-        });
-    }
-    if (Conditionutil) {
-        // Mise à jour du titre des mentions légales
-        let titleElement = document.getElementById("title");
-        if (titleElement) titleElement.textContent = Conditionutil.title;
-
-        // Mise à jour des sections des mentions légales
-        Object.keys(Conditionutil).forEach(key => {
-            if (key === "title") return; // Ignore les éléments non liés au contenu dynamique
-            let element = document.getElementById(key);
-            if (element) {
-                element.textContent = Conditionutil[key];
-            }
-        });
-    }
-    if (donnee) {
-        // Mise à jour du titre des mentions légales
-        let titleElement = document.getElementById("title");
-        if (titleElement) titleElement.textContent = donnee.title;
-
-        // Mise à jour des sections des mentions légales
-        Object.keys(donnee).forEach(key => {
-            if (key === "title") return; // Ignore les éléments non liés au contenu dynamique
-            let element = document.getElementById(key);
-            if (element) {
-                element.textContent = donnee[key];
-            }
-        });
-    }
+            Object.keys(translations[section]).forEach(key => {
+                if (key !== "title") {
+                    let element = document.getElementById(key);
+                    if (element) element.textContent = translations[section][key];
+                }
+            });
+        }
+    });
 }
 
 // Fonction pour afficher un message sous forme de popup depuis l'URL
@@ -139,55 +111,41 @@ function removeUrlParam(param) {
     window.history.replaceState({}, document.title, url.toString());  // Met à jour l'URL sans recharger la page
 }
 
-
-// Fonction pour changer la langue
+// ✅ Fonction pour changer la langue et stocker dans un cookie
 function changeLanguage(lang) {
     currentLang = lang;
+    setCookie("lang", lang, 30); // Stocker la langue pour 30 jours
     loadTranslations(currentLang);
-    localStorage.setItem('currentLang', lang); // Sauvegarde la langue dans le localStorage
-    toggleDropdown(false); // Ferme le menu après la sélection
+    toggleDropdown(false);
 }
 
-// Fonction pour ouvrir ou fermer le menu déroulant
+// ✅ Fonction pour ouvrir/fermer le menu déroulant
 function toggleDropdown(forceClose = null) {
     const dropdown = document.getElementById("lang-dropdown");
-    const flag = document.querySelector(".flag"); // Sélectionner l'élément .flag
+    const flag = document.querySelector(".flag");
 
-    // Ouvre ou ferme le menu déroulant
     if (forceClose === null) {
-        isDropdownOpen = !isDropdownOpen; // Inverse l'état du menu
+        isDropdownOpen = !isDropdownOpen;
     } else {
         isDropdownOpen = !forceClose;
     }
 
-    // Affiche ou masque le menu
     dropdown.classList.toggle("hidden", !isDropdownOpen);
-
-    // Ajoute ou retire la classe 'menu-open' sur l'élément .flag
-    if (isDropdownOpen) {
-        flag.classList.add("menu-open"); // Ajoute la classe pour désactiver le tooltip
-    } else {
-        flag.classList.remove("menu-open"); // Retire la classe pour réactiver le tooltip
-    }
+    flag.classList.toggle("menu-open", isDropdownOpen);
 }
 
-// Ajout des événements après le chargement du DOM
+// ✅ Initialisation au chargement de la page
 document.addEventListener("DOMContentLoaded", () => {
-    const storedLang = localStorage.getItem('currentLang'); // Récupère la langue stockée
-    currentLang = storedLang || "fr"; // Si aucune langue n'est stockée, utilise "fr" par défaut
+    currentLang = getCookie("lang") || "fr"; // Récupérer la langue depuis le cookie
 
-
-    loadTranslations(currentLang); // Charger la langue
+    loadTranslations(currentLang);
 
     const langButton = document.getElementById("lang-button");
     const dropdown = document.getElementById("lang-dropdown");
 
-    // Vérification que les éléments existent
     if (langButton && dropdown) {
-        // Clic sur le bouton pour ouvrir/fermer le menu
         langButton.addEventListener("click", () => toggleDropdown());
 
-        // Clic sur un drapeau pour changer la langue
         document.querySelectorAll(".lang-option").forEach(flag => {
             flag.addEventListener("click", (event) => {
                 const selectedLang = event.target.getAttribute("data-lang");
@@ -196,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Fermer le menu en cliquant à l'extérieur
         document.addEventListener("click", (event) => {
             if (!dropdown.contains(event.target) && !langButton.contains(event.target)) {
                 toggleDropdown(true);

@@ -8,8 +8,8 @@
             <a id="footer-mentions" href="footer/mention-legal.php"></a>
             <a id="footer-donnees" href="footer/donnee-perso.php"></a>
             <a id="footer-cgu" href="footer/CGU.php"></a>
-            <a id="footer-cookies" href="#">Gestion des cookies</a>
-            <a id="footer-plan" href="#">Plan du site</a>
+            <a id="footer-cookies" href="footer/cookie.php"></a>
+            <a id="footer-plan" href="footer/plan-site.php"></a>
         </nav>
         <div class="footer-icons"></div>
     </div>

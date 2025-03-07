@@ -1,6 +1,5 @@
 {
     "flagAlt": "Français",
-    "Profil-text": "Clique pour te connecter",
     "nav": {
         "accueil": "Accueil",
         "classements": "Classement",
@@ -17,7 +16,11 @@
         "msg-psw-login": "Mot de passe",
         "msg-psw-register": "Mot de passe",
         "connect-button": "Se connecter",
-        "cancel-button": "Annuler"
+        "cancel-button": "Annuler",
+        "sub-button" : "S'inscrire",
+        "Bienvenue": "Bienvenue",
+        "account-button": "Profil",
+        "logout-button": "Déconnexion"
     },
     "footer": {
         "mentions": "Mentions légales",
@@ -31,13 +34,13 @@
         "mentions_title1": "Mentions Légales",
         "mentions_last_update": "Dernière mise à jour : 24/02/2025",
         "mentions_editor": "1. Éditeur du site",
-        "mentions_company_name": "Nom de l'entreprise : [Nom de l'entreprise]",
-        "mentions_address": "Adresse : [Adresse complète]",
-        "mentions_siret": "Numéro SIRET : [Numéro SIRET]",
+        "mentions_company_name": "Nom de l'entreprise : TaperTapezTaper!",
+        "mentions_address": "Adresse : 3 rue de la jungle, Nyanya",
+        "mentions_siret": "Numéro SIRET : 784 674 675 03004",
         "mentions_email": "Email :",
         "mentions_hosting": "2. Hébergement",
-        "mentions_host": "Hébergeur : [Nom de l’hébergeur]",
-        "mentions_host_address": "Adresse : [Adresse complète de l’hébergeur]",
+        "mentions_host": "Hébergeur : MoewMeow",
+        "mentions_host_address": "Adresse : 4 chemin du Mordor, Nyanya",
         "mentions_intellectual_property": "3. Propriété intellectuelle",
         "mentions_intellectual_text": "Tous les contenus présents sur ce site sont protégés par le droit d'auteur.",
         "mentions_data_protection": "4. Protection des données personnelles",
@@ -79,7 +82,23 @@
         "don_rights": "Droits des utilisateurs",
         "don_rights_text": "Vous avez le droit d'accéder, de modifier ou de supprimer vos données personnelles en nous contactant via l'adresse email mentionnée ci-dessous.",
         "don_contact": "Contact",
-        "don_contact_text": "Pour toute question concernant vos données personnelles, veuillez nous contacter à l'adresse suivante : support@exemple.com",
+        "don_contact_text": "Pour toute question concernant vos données personnelles, veuillez nous contacter à l'adresse suivante : ",
+        "scrollTopBtn": "↑ Retour en haut"
+    },
+    "plan_site": {
+        "PS_title": "Plan du site",
+        "PS_title1": "Plan du site",
+        "PS_last_update": "Dernière mise à jour : 07/03/2025",
+        "PS_accueil": "Accueil",
+        "PS_accueil_text": "Découvrez notre jeu de rythme pour vous hisser en haut du classement.",
+        "PS_connexion": "Connexion",
+        "PS_connexion_text": "Connectez vous pour conserver votre progression.",
+        "PS_classement": "Classement",
+        "PS_classement_text": "Un classement qui répertorie les 5 meilleurs joueurs.",
+        "PS_rights": "Droits des utilisateurs",
+        "PS_rights_text": "Vous avez le droit d'accéder, de modifier ou de supprimer vos données personnelles en nous contactant via l'adresse email mentionnée ci-dessous.",
+        "PS_contact": "Contact",
+        "PS_contact_text": "Pour toute question, contactez-nous à ",
         "scrollTopBtn": "↑ Retour en haut"
     },
     "messages": {

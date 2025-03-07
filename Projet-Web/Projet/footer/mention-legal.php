@@ -24,7 +24,7 @@
         <p ><strong id="mentions_company_name"></strong></p>
         <p><strong id="mentions_address"></strong></p>
         <p><strong id="mentions_siret"></strong></p>
-        <p><strong id="mentions_email"></strong> <a href="mailto:email@example.com">email@example.com</a></p>
+        <p><strong id="mentions_email"></strong> <a href="mailto:contact@TaperTapezTaper.com">contact@TaperTapezTaper.com</a></p>
     </div>
 
     <div class="section">
