@@ -102,17 +102,17 @@
         "scrollTopBtn": "↑ Retour en haut"
     },
     "aide": {
-        "Aide_title": "Aide",
-        "Aide_title1": "Aide",
-        "Aide_last_update": "Dernière mise à jour : 07/03/2025",
-        "Aide_accueil": "Accueil",
-        "Aide_accueil_text": "Pour retourner à l'accueil cliquez sur Accueil ou relancez la page.",
-        "Aide_connexion": "Connexion",
-        "Aide_connexion_text": "Si vous n'arrivez pas à vous connecter, vérifiez votre adresse e-mail et votre mot de passe ou contactez notre MoewMeow.",
-        "Aide_classement": "Classement",
-        "Aide_classement_text": "Si votre score n'apparait pas dans le classement, assurez-vous d'être connecté et d'avoir joué suffisamment pour être classé.",
-        "Aide_contact": "Contact",
-        "Aide_contact_text": "Pour toute question, contactez-nous à MoewMeow",
+        "aide_title": "Aide",
+        "aide_title1": "Aide",
+        "aide_last_update": "Dernière mise à jour : 14/03/2025",
+        "aide_accueil": "Accueil",
+        "aide_accueil_text": "Pour retourner à l'accueil cliquez sur Accueil ou relancez la page.",
+        "aide_connexion": "Connexion",
+        "aide_connexion_text": "Si vous n'arrivez pas à vous connecter, vérifiez votre adresse e-mail et votre mot de passe ou contactez notre MoewMeow.",
+        "aide_classement": "Classement",
+        "aide_classement_text": "Si votre score n'apparait pas dans le classement, assurez-vous d'être connecté et d'avoir joué suffisamment pour être classé.",
+        "aide_contact": "Contact",
+        "aide_contact_text": "Pour toute question, contactez-nous à ",
         "scrollTopBtn": "↑ Retour en haut"
     },
     "messages": {

@@ -63,7 +63,7 @@ function updatePageContent(translations) {
         if (element) element.textContent = translations.footer[id];
     });
 
-    ["mentions_legal", "CGU", "donnee_perso", "plan_site"].forEach(section => {
+    ["mentions_legal", "CGU", "donnee_perso", "plan_site" , "aide"].forEach(section => {
         if (translations[section]) {
             let titleElement = document.getElementById("title");
             if (titleElement) titleElement.textContent = translations[section].title;
