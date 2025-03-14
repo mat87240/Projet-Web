@@ -1,0 +1,81 @@
+@import "base.css";
+
+/* ==================================================
+   #     Mentions Légales / Donne perso / CGU /     #
+   ==================================================*/
+
+/* Titre principal */
+h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #1a1a2e;
+    margin-top: 20px;
+}
+
+/* Paragraphe */
+p {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+/* Section principale */
+.section {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Utilisation de Flexbox */
+    flex-direction: column;
+    height: 100%; /* Permet de gérer la hauteur des cases */
+}
+
+/* Titre secondaire dans la section */
+.section h2 {
+    font-size: 1.5em;
+    color: #4b4b85;
+    border-bottom: 2px solid #b570f6;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Texte fort */
+.section strong {
+    color: #1a1a2e;
+}
+
+/* Liens dans les sections */
+.section a {
+    color: #4b4b85;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Effet au survol des liens */
+.section a:hover {
+    text-decoration: underline;
+    color: #b570f6;
+}
+/* Container des sections */
+.sections-wrapper {
+    display: flex;
+    flex-direction: column; /* Les éléments sont empilés les uns au-dessus des autres */
+    gap: 20px; /* Espacement entre chaque section */
+    width: 100%; /* Assure que les sections prennent toute la largeur */
+}
+
+/* Section individuelle */
+.sections-wrapper .section {
+    display: block; /* Par défaut, chaque section est un bloc */
+    width: 100%; /* Assure que chaque section prend toute la largeur disponible */
+    max-width: 800px; /* Limite la largeur des sections pour qu'elles ne soient pas trop larges */
+    margin: 0 auto; /* Centrer chaque section */
+    padding: 20px; /* Padding pour l'intérieur de chaque section */
+    box-sizing: border-box; /* Assure que le padding et les bordures sont inclus dans les dimensions de l'élément */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
