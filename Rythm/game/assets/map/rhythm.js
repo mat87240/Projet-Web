@@ -1,12 +1,13 @@
 import map from "./map.js";
 
 class Rhythm {
-    constructor() {
+    constructor(bpm) {
         this.currentTileId = 1;
-        this.currentBPM = 0;
+        this.currentBPM = bpm;
     }
 
     getCurrentTile() {
+
         if (this.currentTileId === null) {
             return map.getTile(0); 
         }
@@ -16,6 +17,7 @@ class Rhythm {
 
     getNextTile() {
         if (this.currentTileId === null || this.currentTileId + 1 >= map.tiles.length) {
+            console.log("meow")
             return map.getTile(0);
         }
         
@@ -23,10 +25,10 @@ class Rhythm {
     }
 
     getPrevTile() {
-        if (this.currentTileId === null || this.currentTileId - 1 <= map.tiles.length) {
+        if (this.currentTileId === null || this.currentTileId - 1 <= 0) {
             return map.getTile(0);
         }
-        
+        console.log(this.currentTileId-1)
         return map.getTile(this.currentTileId - 1);
     }
 

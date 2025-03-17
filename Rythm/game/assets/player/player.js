@@ -4,21 +4,32 @@ class Player {
     constructor(x = 0, y = 0, fixed = false, targetX = 0, targetY = 0) {
         this.x = x;
         this.y = y;
-        this.x2 = 0;
-        this.y2 = 0;
+        this.x2 = x + 50;
+        this.y2 = y;
         this.fixed = fixed;
         this.targetX = targetX;
         this.targetY = targetY;
+        this.angle = 0;
+        this.lastFrameTime = performance.now();
     }
 
-    updatePosition(deltaTime) {
-        const currentTile = rhythm.getCurrentTile();
-        const prevTile = rhythm.getPrevTile();
-        const nextTile = rhythm.getNextTile();
+    updatePosition() {
+        const currentTime = performance.now();
+        const elapsedTime = (currentTime - this.lastFrameTime) / 1000;
+        this.lastFrameTime = currentTime;
 
+        const currentTile = rhythm.getCurrentTile();
         const { centerX, centerY } = this.calculateTileCenter(currentTile);
-        const { centerX: prevCenterX, centerY: prevCenterY } = this.calculateTileCenter(prevTile);
-        const { centerX: nextCenterX, centerY: nextCenterY } = this.calculateTileCenter(nextTile);
+
+        this.x = centerX;
+        this.y = centerY;
+
+        const bpm = rhythm.getCurrentBPM();
+        const rotationSpeed = Math.PI * (bpm / 60);
+
+        this.angle += elapsedTime * rotationSpeed;
+        this.x2 = this.x + 100 * Math.cos(this.angle);
+        this.y2 = this.y + 100 * Math.sin(this.angle);
     }
 
     calculateTileCenter(tile) {

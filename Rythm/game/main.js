@@ -18,7 +18,6 @@ function tick() {
     lastFrameTime = now;
 
     totalTime += deltaTime;
-    console.log("Elapsed Time since start (in seconds): " + totalTime.toFixed(3));
 
     const currentTile = rhythm.getCurrentTile();
     player.updatePosition(totalTime);
@@ -36,7 +35,7 @@ function gameLoop() {
 async function init() {
     const levelName = getLvlName(); 
     await map.loadLevel(levelName);
-    rhythm.updateRhythm(120, 0);
+    rhythm.updateRhythm(120, 1);
     handleInput();
     loadBackground(levelName);
     requestAnimationFrame(gameLoop);

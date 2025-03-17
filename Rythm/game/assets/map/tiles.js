@@ -79,12 +79,13 @@ function calculate6PointPrism(x1, y1, t, t2) {
 
     const points = [
         { x: x1, y: y1 },
-        { x: x1 + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT)},
-        { x: x1 + 100 * Math.cos(radT) + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) - 100 * Math.sin(radT)},
-        { x: x1 + 100 * Math.cos(radT), y: y1 - 100 * Math.sin(radT)},
-        { x: x1 + 100 * Math.cos((Math.PI / 180) * t) + 100 * Math.cos((Math.PI / 180) * (t + t2)), y: y1 - 100 * Math.sin((Math.PI / 180) * t) - 100 * Math.sin((Math.PI / 180) * (t + t2)) },
-        { x: x1 + 100 * Math.cos((Math.PI / 180) * t) + 100 * Math.cos((Math.PI / 180) * (t + t2)) + 50 * Math.sin((Math.PI / 180) * (t + t2)), y: y1 - 100 * Math.sin((Math.PI / 180) * t) - 100 * Math.sin((Math.PI / 180) * (t + t2)) + 50 * Math.cos((Math.PI / 180) * (t + t2)) },
-        { x: x1 + 100 * Math.cos((Math.PI / 180) * t) + 50 * Math.sin((Math.PI / 180) * (t + t2)), y: y1 - 100 * Math.sin((Math.PI / 180) * t) + 50 * Math.cos((Math.PI / 180) * (t + t2)) }
+        { x: x1 + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) },
+        { x: x1 + 50 * Math.cos(radT) + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) - 50 * Math.sin(radT) },
+        { x: x1 + 50 * Math.cos(radT), y: y1 - 50 * Math.sin(radT) },
+        { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) },
+        { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) + 50 * Math.cos(radT2) },
+        { x: x1 + 50 * Math.cos(radT) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) + 50 * Math.cos(radT2) }
     ];
+    
     return points;
 }

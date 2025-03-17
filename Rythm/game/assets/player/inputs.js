@@ -7,7 +7,6 @@ const isKeyDown = {};
 const squares = document.querySelectorAll('.square');
 
 function handleInput() {
-  console.log("jkfdkjf")
   document.addEventListener('keydown', function (event) {
     const key = event.key;
     const index = KeyBinds.indexOf(key);
