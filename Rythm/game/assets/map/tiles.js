@@ -38,10 +38,12 @@ export function generateTiles(data) {
 
         let specificPoint;
 
+        
         if (newTile.points.length === 4) {
             specificPoint = newTile.points[2];
         } else {
             specificPoint = newTile.points[4];
+            
         }
 
          lastPointX = specificPoint.x;
@@ -86,6 +88,49 @@ function calculate6PointPrism(x1, y1, t, t2) {
         { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) + 50 * Math.cos(radT2) },
         { x: x1 + 50 * Math.cos(radT) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) + 50 * Math.cos(radT2) }
     ];
-    
+
+    const intersection = calculateIntersection(points);
+
+    if (intersection) {
+        points.push(intersection);
+    }
+
     return points;
 }
+
+function calculateIntersection(points) {
+    const P1 = points[1];
+    const P2 = points[2];
+    const P5 = points[5];
+    const P6 = points[6];
+
+    const dx1 = P1.x - P2.x;
+    const dy1 = P1.y - P2.y;
+    const dx2 = P5.x - P6.x;
+    const dy2 = P5.y - P6.y;
+
+    const det = dx1 * dy2 - dy1 * dx2;
+
+    if (det === 0) {
+        if (dx1 === 0 && dx2 === 0) {
+            return null;
+        }
+        if (dy1 === 0 && dy2 === 0) {
+            return null; 
+        }
+        return null;
+    }
+
+    const dx3 = P5.x - P1.x;
+    const dy3 = P5.y - P1.y;
+
+    const t = (dx3 * dy2 - dy3 * dx2) / det;
+
+    const intersectionX = P1.x + t * dx1;
+    const intersectionY = P1.y + t * dy1;
+    console.log(intersectionX + " " + intersectionY)
+
+    return { x: intersectionX, y: intersectionY };
+}
+
+ 

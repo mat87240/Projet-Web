@@ -65,109 +65,63 @@ export function drawTiles(tiles, camera) {
             ctx.globalAlpha = alpha;
 
             if (tile.points.length === 4) {
+                // Draw the filled polygon
                 ctx.beginPath();
                 ctx.moveTo(points[0].screenX, points[0].screenY);
-
+            
                 points.slice(1).forEach(point => {
                     ctx.lineTo(point.screenX, point.screenY);
                 });
-
+            
                 ctx.closePath();
                 ctx.fillStyle = fillColor;
                 ctx.fill();
-                if (tile.points.length === 4) {
-                    ctx.beginPath();
-                    ctx.moveTo(points[0].screenX, points[0].screenY);
-                
-                    for (let i = 1; i < points.length; i++) {
-                        ctx.lineTo(points[i].screenX, points[i].screenY);
-                    }
-                
-                    ctx.lineTo(points[0].screenX, points[0].screenY);
-                
-                    ctx.stroke();
-                }
-
-            } else if (tile.points.length === 7) {
-
-                // First polygon (points 0, 1, 2, 3)
+            
                 ctx.beginPath();
                 ctx.moveTo(points[0].screenX, points[0].screenY);
-                ctx.lineTo(points[1].screenX, points[1].screenY);
+            
+                for (let i = 1; i < points.length; i++) {
+                    ctx.lineTo(points[i].screenX, points[i].screenY);
+                }
+            
+                ctx.lineTo(points[0].screenX, points[0].screenY);
+            
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+             else if (tile.points.length >= 7) {
+                ctx.beginPath();
+                // Connect all the points in sequence: 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 0
+                ctx.moveTo(points[0].screenX, points[0].screenY);
+                ctx.lineTo(points[3].screenX, points[3].screenY);
                 ctx.lineTo(points[2].screenX, points[2].screenY);
                 ctx.lineTo(points[3].screenX, points[3].screenY);
-                ctx.closePath();
-
-                ctx.lineWidth = 2;
-                ctx.fillStyle = fillColor;
-                ctx.fill();
-
-                // Second polygon (points 3, 4, 5, 6)
-                ctx.beginPath();
-                ctx.moveTo(points[3].screenX, points[3].screenY);
                 ctx.lineTo(points[4].screenX, points[4].screenY);
                 ctx.lineTo(points[5].screenX, points[5].screenY);
                 ctx.lineTo(points[6].screenX, points[6].screenY);
-                ctx.closePath();
-
+                ctx.lineTo(points[7].screenX, points[7].screenY);
+                ctx.lineTo(points[1].screenX, points[1].screenY);
+                
+                ctx.closePath()
+    
+                ctx.lineWidth = 3;
+                ctx.fillStyle = fillColor;
                 ctx.fill();
-
-                // Draw the partial circle from P2 to P6 centered at P3
-                const centerX = points[3].screenX;
-                const centerY = points[3].screenY;
-
-                const radius = Math.sqrt(
-                    (points[3].screenX - points[2].screenX) ** 2 +
-                    (points[3].screenY - points[2].screenY) ** 2
-                );
-
-                const startAngle = Math.atan2(
-                    points[2].screenY - centerY,
-                    points[2].screenX - centerX
-                );
-                const endAngle = Math.atan2(
-                    points[6].screenY - centerY,
-                    points[6].screenX - centerX
-                );
-
-                ctx.beginPath();
-                ctx.moveTo(points[3].screenX, points[3].screenY);
-                ctx.lineTo(points[2].screenX, points[2].screenY);
-                ctx.arc(
-                    points[3].screenX, points[3].screenY,
-                    radius, 
-                    Math.atan2(points[6].screenY - points[3].screenY, points[6].screenX - points[3].screenX), // Start at P2
-                    Math.atan2(points[6].screenY - points[3].screenY, points[6].screenX - points[3].screenX), // End at P6
-                );
+                
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 3;
+                ctx.stroke();
 
                 ctx.lineTo(points[3].screenX, points[3].screenY);
                 ctx.closePath();
 
                 ctx.fillStyle = fillColor;
                 ctx.fill();
-
-                ctx.beginPath();
-                ctx.strokeStyle = "white";
-                ctx.moveTo(points[0].screenX, points[0].screenY);
-                ctx.lineTo(points[1].screenX, points[1].screenY);
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.strokeStyle = "white";
-                ctx.moveTo(points[0].screenX, points[0].screenY);
-                ctx.lineTo(points[3].screenX, points[3].screenY);
-                ctx.stroke();
-
-                
-                ctx.beginPath();
-                ctx.strokeStyle = "white";
-                ctx.moveTo(points[3].screenX, points[3].screenY);
-                ctx.lineTo(points[4].screenX, points[4].screenY);
-                ctx.stroke();
                 }
                 
             ctx.globalAlpha = 1.0;
-        }
+        }            
     });
 
     const radius = 20;

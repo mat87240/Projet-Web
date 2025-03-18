@@ -35,7 +35,7 @@ function gameLoop() {
 async function init() {
     const levelName = getLvlName(); 
     await map.loadLevel(levelName);
-    rhythm.updateRhythm(120, 1);
+    rhythm.updateRhythm(100, 1);
     handleInput();
     loadBackground(levelName);
     requestAnimationFrame(gameLoop);
