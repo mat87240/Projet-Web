@@ -1,0 +1,73 @@
+@import "base.css";
+
+
+/* ============================ 
+   #       Leaderboard Styling  #
+   ============================ */
+
+/* Container de leaderboard */
+.leader {
+    display: flex;              /* Active le mode flexbox */
+    flex-direction: column;
+    justify-content: center;    /* Centre horizontalement */
+    align-items: center;        /* Centre verticalement */
+    flex-grow: 1;               /* Permet de prendre tout l'espace disponible entre header et footer */
+    padding: 20px;              /* Ajoute un peu d'espace autour du leaderboard */
+}
+
+.leaderboard {
+    display: flex;              /* Active le mode flexbox */
+    flex-direction: column;
+    justify-content: space-around;    /* Centre horizontalement */
+    align-items: stretch;        /* Centre verticalement */
+    flex-grow: 1;               /* Permet de prendre tout l'espace disponible entre header et footer */
+    padding: 20px; 
+    width: 600px;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 16px;
+    font-weight: bold;
+}
+
+.header-boxes {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 0;
+    border-bottom: 2px solid black;
+}
+
+.header-boxes div {
+    width: 30%;
+    padding: 12px;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+.player-card {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 8px;
+    padding: 12px 0;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+.player-card:hover {
+    background-color: #d0d0d0;
+}
+
+.player-card div {
+    width: 30%;
+}
