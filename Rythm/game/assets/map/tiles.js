@@ -79,15 +79,32 @@ function calculate6PointPrism(x1, y1, t, t2) {
     const radT = (Math.PI / 180) * t;
     const radT2 = (Math.PI / 180) * (t + t2);
 
-    const points = [
-        { x: x1, y: y1 },
-        { x: x1 + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) },
-        { x: x1 + 50 * Math.cos(radT) + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) - 50 * Math.sin(radT) },
-        { x: x1 + 50 * Math.cos(radT), y: y1 - 50 * Math.sin(radT) },
-        { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) },
-        { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) + 50 * Math.cos(radT2) },
-        { x: x1 + 50 * Math.cos(radT) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) + 50 * Math.cos(radT2) }
-    ];
+    let points;
+
+
+    if (t2 >= 0) {
+        points = [
+            { x: x1, y: y1 },
+            { x: x1 + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) },
+            { x: x1 + 50 * Math.cos(radT) + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) - 50 * Math.sin(radT) },
+            { x: x1 + 50 * Math.cos(radT), y: y1 - 50 * Math.sin(radT) },
+            { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) },
+            { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) + 50 * Math.cos(radT2) },
+            { x: x1 + 50 * Math.cos(radT) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) + 50 * Math.cos(radT2) }
+        ];
+    } else {
+        points = [
+            { x: x1, y: y1 },
+            { x: x1 + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) },
+            { x: x1 + 50 * Math.cos(radT) + 50 * Math.sin(radT), y: y1 + 50 * Math.cos(radT) - 50 * Math.sin(radT) },
+            { x: x1 + 50 * Math.cos(radT), y: y1 - 50 * Math.sin(radT) },
+            { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2) - 50 * Math.sin(radT2) + 50 * Math.sin(radT) + 50 * Math.sin(radT2), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) - 50 * Math.cos(radT2) + 50 * Math.cos(radT) + 50 * Math.cos(radT2) },
+            { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2) - 50 * Math.sin(radT2) + 50 * Math.sin(radT), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) - 50 * Math.cos(radT2) + 50 * Math.cos(radT) },
+            { x: x1 + 50 * Math.cos(radT) + 50 * Math.cos(radT2) - 50 * Math.sin(radT2) + 50 * Math.sin(radT), y: y1 - 50 * Math.sin(radT) - 50 * Math.sin(radT2) - 50 * Math.cos(radT2) + 50 * Math.cos(radT) }
+        ];
+    }
+    
+    
 
     const intersection = calculateIntersection(points);
 
@@ -97,6 +114,7 @@ function calculate6PointPrism(x1, y1, t, t2) {
 
     return points;
 }
+
 
 function calculateIntersection(points) {
     const P1 = points[1];

@@ -66,6 +66,7 @@ export function drawTiles(tiles, camera) {
 
             if (tile.points.length === 4) {
                 // Draw the filled polygon
+            
                 ctx.beginPath();
                 ctx.moveTo(points[0].screenX, points[0].screenY);
             
@@ -89,8 +90,17 @@ export function drawTiles(tiles, camera) {
                 ctx.strokeStyle = 'white';
                 ctx.lineWidth = 2;
                 ctx.stroke();
+                
             }
              else if (tile.points.length >= 7) {
+                ctx.fillStyle = "white"; 
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
+
+points.forEach((point, index) => {
+    ctx.fillText(index, point.screenX, point.screenY);
+});
+                /*
                 ctx.beginPath();
                 // Connect all the points in sequence: 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 0
                 ctx.moveTo(points[0].screenX, points[0].screenY);
@@ -118,8 +128,12 @@ export function drawTiles(tiles, camera) {
 
                 ctx.fillStyle = fillColor;
                 ctx.fill();
-                }
+                */
+            }
                 
+                
+                ctx.font = "14px Arial";
+
             ctx.globalAlpha = 1.0;
         }            
     });
