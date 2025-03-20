@@ -1,7 +1,7 @@
 import rhythm from "../map/rhythm.js";
 
 class Player {
-    constructor(x = 50, y = 25, fixed = false, targetX = 0, targetY = 0) {
+    constructor(x = 50, y = 25, fixed = false, targetX = 0, targetY = 0, autoPlayer = true, tiles = []) {
         this.x = x;
         this.y = y;
         this.x2 = x + 50;
@@ -12,6 +12,9 @@ class Player {
         this.blueAngle = 0;
         this.redAngle = 0;
         this.lastFrameTime = performance.now();
+        this.autoPlayer = autoPlayer; // New property to enable auto movement
+        this.tiles = tiles; // Array of tile objects
+        this.currentTileIndex = 0; // Start on the first tile
     }
 
     updatePosition() {
@@ -22,6 +25,7 @@ class Player {
         const bpm = rhythm.getCurrentBPM();
         const rotationSpeed = Math.PI * (bpm / 60);
     
+        // Update player position based on fixed state
         if (!this.fixed) {
             this.blueAngle += elapsedTime * rotationSpeed;
             this.x2 = this.x + 100 * Math.cos(this.blueAngle);
@@ -31,8 +35,12 @@ class Player {
             this.x = this.x2 + 100 * Math.cos(this.redAngle);
             this.y = this.y2 + 100 * Math.sin(this.redAngle);
         }
+
+        // If autoPlayer is enabled, move to the next tile based on BPM
+        if (this.autoPlayer) {
+            this.autoMove();
+        }
     }
-    
 
     invert() {
         if (!this.fixed) {
@@ -48,9 +56,33 @@ class Player {
             this.x2 = this.x + 100 * Math.cos(this.blueAngle);
             this.y2 = this.y + 100 * Math.sin(this.blueAngle);
         }
+        this.y2=25
+        this.y=25;
         this.fixed = !this.fixed;
     }
+    
 
+    autoMove() {
+        const nextTile = rhythm.getNextTile();
+        if (!nextTile) return;
+    
+        const snapThreshold = 10;
+        let distanceToTile;
+    
+        if (this.fixed) {
+            distanceToTile = Math.sqrt(Math.pow(this.x - nextTile.x - 50, 2) + Math.pow(this.y - nextTile.y - 25, 2));
+        } else {
+            distanceToTile = Math.sqrt(Math.pow(this.x2 - nextTile.x - 50, 2) + Math.pow(this.y2 - nextTile.y - 25, 2));
+        }
+    
+        if (distanceToTile < snapThreshold) {
+            this.invert();
+            rhythm.forward(1);
+        }
+    }
+    
+    
+    
     calculateTileCenter(tile) {
         let centerX, centerY;
 
@@ -67,7 +99,6 @@ class Player {
             const p3 = tile.points[3];
             const p6 = tile.points[6];
 
-            const center = this.findCircumcenter(p2, p3, p6);
 
             centerX = center.x;
             centerY = center.y;

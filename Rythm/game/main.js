@@ -35,7 +35,8 @@ function gameLoop() {
 async function init() {
     const levelName = getLvlName(); 
     await map.loadLevel(levelName);
-    rhythm.updateRhythm(100, 1);
+    rhythm.updateRhythm(240, 1);
+
     handleInput();
     loadBackground(levelName);
     requestAnimationFrame(gameLoop);
@@ -47,6 +48,5 @@ function loadBackground(levelName) {
     document.body.style.backgroundSize = "cover";
     document.body.style.backgroundPosition = "center";
 }
-
 
 init();
