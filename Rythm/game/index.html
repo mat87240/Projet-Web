@@ -27,6 +27,24 @@
   </div>
 </body>
 
+<div id="particles-js"></div>
+
+<!-- Particles.js library for background effects -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<!-- Custom configuration for particles effect -->
+<script type="module">
+  import { getLvlName } from "../globalAssets/transfer.js";
+
+  async function loadParticlesConfig() {
+    const levelName = await getLvlName();
+    const script = document.createElement("script");
+    script.src = `../globalAssets/levels/${levelName}/particles-config.js`;
+    document.body.appendChild(script);
+  }
+
+  loadParticlesConfig();
+</script>
 <!-- Import JavaScript module for game logic -->
 <script type="module" src="../game/main.js"></script>  
 </html>

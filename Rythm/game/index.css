@@ -102,3 +102,13 @@ html, body {
 #importMusicBtn:hover {
     background-color: #45a049;
 }
+
+/* Particles container styling */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Make particles unclickable */
+}
