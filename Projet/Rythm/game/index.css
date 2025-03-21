@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.gameplay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.path-canvas {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+.keystroke {
+    position: absolute;
+    bottom: 10px; 
+    left: 10px;
+    display: flex;
+    flex-direction: row; /* Aligning keys horizontally */
+    gap: 10px; 
+    z-index: 1; 
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.1s ease, box-shadow 0.1s ease;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+#key1 {
+    background-color: #a2c2e5;
+}
+
+#key2 {
+    background-color: #f7a9b1;
+}
+
+#key3 {
+    background-color: #c8a7f3;
+}
+
+#key4 {
+    background-color: #b3e0b6;
+}
+
+.square.lit {   
+    background-color: #f0f0f0;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.import-music {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+#importMusicBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#importMusicBtn:hover {
+    background-color: #45a049;
+}
