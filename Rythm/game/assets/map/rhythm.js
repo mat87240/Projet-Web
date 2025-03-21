@@ -10,23 +10,23 @@ class Rhythm {
         this.canInput = true; 
     }
 
+    // Get the current tile based on the tile ID
     getCurrentTile() {
-
         if (this.currentTileId === null) {
             return map.getTile(0); 
         }
-    
         return map.getTile(this.currentTileId);
     }
 
+    // Get the next tile, looping back if needed
     getNextTile() {
         if (this.currentTileId === null || this.currentTileId + 1 >= map.tiles.length) {
             return map.getTile(0);
         }
-        
         return map.getTile(this.currentTileId + 1);
     }
 
+    // Get the previous tile, preventing negative IDs
     getPrevTile() {
         if (this.currentTileId === null || this.currentTileId - 1 <= 0) {
             return map.getTile(0);
@@ -34,6 +34,7 @@ class Rhythm {
         return map.getTile(this.currentTileId - 1);
     }
 
+    // Set the current tile ID
     setCurrentTile(tileID) {
         this.currentTileId = tileID;
     }
@@ -46,15 +47,18 @@ class Rhythm {
         this.currentBPM = bpm;
     }
 
+    // Update both BPM and tile ID at once
     updateRhythm(bpm, tileID) {
         this.setCurrentBPM(bpm);
         this.setCurrentTile(tileID);
     }
 
-    forward(x){
-        this.currentTileId+=x;
+    // Move forward by x tiles
+    forward(x) {
+        this.currentTileId += x;
     }
 
+    // Check if the player successfully moved to the next tile
     checkSucces() {
         const nextTile = this.getNextTile();
         if (!nextTile) return false;
@@ -62,7 +66,7 @@ class Rhythm {
         const movingX = player.fixed ? player.x : player.x2;
         const movingY = player.fixed ? player.y : player.y2;
     
-        if (1==1) {
+        if (1 == 1) { // Placeholder condition, logic needs refinement
             const { centerX, centerY } = player.calculateTileCenter(nextTile);
             
             if (player.fixed) {
@@ -78,36 +82,31 @@ class Rhythm {
     
         return false;
     }
-    
+
+    // Check if a point (x, y) is inside a tile with a bias distance
     isInsideTileWithBias(x, y, tile, biasDistance = 5) {
-        const points = tile.points;
         let count = 0;
+        const points = tile.points;
         const numPoints = points.length;
-    
+
         for (let i = 0; i < numPoints; i++) {
             const p1 = points[i];
             const p2 = points[(i + 1) % numPoints];
-    
-            if (isEdgeIntersectingWithBias(p1, p2, x, y, biasDistance)) {
-                count++;
+
+            const [x1, y1] = [p1.x, p1.y];
+            const [x2, y2] = [p2.x, p2.y];
+
+            if (!(y1 > y && y2 > y || y1 < y && y2 < y)) {
+                const intersectX = (x2 - x1) * (y - y1) / (y2 - y1) + x1;
+                if (x < intersectX + biasDistance && x > intersectX - biasDistance) {
+                    count++;
+                }
             }
         }
-    
         return count % 2 === 1;
-    }
-    
-    isEdgeIntersectingWithBias(p1, p2, x, y, biasDistance) {
-        const [x1, y1] = [p1.x, p1.y];
-        const [x2, y2] = [p2.x, p2.y];
-    
-        if (y1 > y && y2 > y || y1 < y && y2 < y) {
-            return false;  
-        }
-    
-        const intersectX = (x2 - x1) * (y - y1) / (y2 - y1) + x1;
-        return x < intersectX + biasDistance && x > intersectX - biasDistance;
-    }
-    
+    }    
+
+    // Start the level with a countdown
     checkLevelStarted() {
         if (!this.levelStarted) {
             this.levelStarted = true;
@@ -126,6 +125,7 @@ class Rhythm {
         return false;
     }
 
+    // Check if the level is finished
     checkLevelFinished() {
         const lastTileId = map.tiles.length - 1;
         if (this.currentTileId >= lastTileId) {
@@ -135,6 +135,7 @@ class Rhythm {
         return false;
     }
 
+    // Display a message when the level finishes
     displayLevelFinished() {
         const finishLabel = createLabel('Level Finished!', '48px', 'white');
         startCountdown(finishLabel, performance.now(), 2000, (remainingTime) => {
@@ -147,6 +148,7 @@ class Rhythm {
         });
     }
 
+    // Check if player input is allowed
     isInputAllowed() {
         return this.canInput;
     }

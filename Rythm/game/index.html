@@ -1,18 +1,23 @@
 <!doctype html>
 <html lang="fr">
 <head>
+  <!-- Meta tags for character encoding and responsive design -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Title of the game -->
   <title>A Dance of Fire and Ice Style Game</title>
+  <!-- Link to the CSS stylesheet -->
   <link rel="stylesheet" href="../game/index.css">
-
 </head>
 <body>
+  <!-- Main container holding the game and keystroke area -->
   <div class="container">
+    <!-- Gameplay area with a canvas for drawing paths -->
     <div class="gameplay">
       <canvas class="path-canvas"></canvas>
     </div>
     
+    <!-- Keystroke area containing four square keys -->
     <div class="keystroke">
       <div class="square" id="key1"></div>
       <div class="square" id="key2"></div>
@@ -22,5 +27,6 @@
   </div>
 </body>
 
+<!-- Import JavaScript module for game logic -->
 <script type="module" src="../game/main.js"></script>  
 </html>

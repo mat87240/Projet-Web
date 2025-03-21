@@ -14,7 +14,9 @@ function cartesianToJS(x, y, camera) {
 
 let tileColors = {};
 
+//Drawing function for player & tiles
 export function drawTiles(tiles, camera) {
+    //Handle canva
     const gameArea = document.querySelector('.gameplay');
     gameArea.innerHTML = '';
 
@@ -34,6 +36,7 @@ export function drawTiles(tiles, camera) {
     
     const currentTileId = currentTile.id;
 
+    //Loop for each tiles (drawing)
     tiles.forEach((tile) => {
         if (!tile || !tile.id) return;
         if (tile.id <= currentTileId.id && tile.fadding === 1) return;
@@ -47,6 +50,7 @@ export function drawTiles(tiles, camera) {
 
         const fillColor = tileColors[tile.id];
 
+        //Chunk system (lag prevention)
         const visibleChunks = map.getVisibleChunks(camera);
 
         const tileChunkX = Math.floor(tile.x / CHUNK_SIZE);
@@ -66,7 +70,6 @@ export function drawTiles(tiles, camera) {
 
             if (tile.points.length === 4) {
                 // Draw the filled polygon
-            
                 ctx.beginPath();
                 ctx.moveTo(points[0].screenX, points[0].screenY);
             

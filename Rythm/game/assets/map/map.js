@@ -6,16 +6,14 @@ const CHUNK_SIZE = 256;
 
 class Map {
     constructor() {
-        this.tiles = [];
-        this.jsonLoaded = false;
+        this.tiles = []; // Stores all tiles of the level
+        this.jsonLoaded = false; // Indicates if JSON data has been loaded
     }
 
     async loadLevel(level) {
         try {
-            const data = await loadJsonData(level);
-
-            const tiles = await generateTiles(data);
-            
+            const data = await loadJsonData(level); // Loads level data from JSON
+            const tiles = await generateTiles(data); // Generates tiles from the data
             this.tiles = tiles;
             this.jsonLoaded = true;
             console.log("Tiles loaded:", this.tiles);
@@ -25,6 +23,7 @@ class Map {
     }
 
     getVisibleChunks(camera) {
+        // Calculates the visible chunks based on the camera position
         const startChunkX = Math.floor((camera.x - window.innerWidth) / CHUNK_SIZE);
         const endChunkX = Math.ceil((camera.x + window.innerWidth) / CHUNK_SIZE);
         const startChunkY = Math.floor((camera.y - window.innerHeight) / CHUNK_SIZE);
@@ -45,22 +44,18 @@ class Map {
             return;
         }
     
-        const currentTile = rhythm.getCurrentTile();
-    
+        const currentTile = rhythm.getCurrentTile(); // Gets the current tile from rhythm
         if (!currentTile) {
             console.warn('No current tile available');
             return;
         }
     
         const currentTileId = currentTile.id;
-    
+
+        // Fades out tiles that have already been passed for a transition effect
         this.tiles.forEach((tile) => {
             if (tile.id < currentTileId && tile.fadding !== 0) {
-                if (tile.fadding > 0.1) {
-                    tile.fadding -= 0.05;
-                } else {
-                    tile.fadding = 0;
-                }
+                tile.fadding = Math.max(0, tile.fadding - 0.05);
             }
         });
     }
@@ -70,7 +65,7 @@ class Map {
             console.warn('Tiles not loaded yet');
             return null;
         }
-        return this.tiles[id];
+        return this.tiles[id]; // Returns the tile with the given ID
     }
 
     getAllTiles() {
@@ -78,9 +73,8 @@ class Map {
             console.warn('Tiles not loaded yet');
             return [];
         }
-        return this.tiles;
+        return this.tiles; // Returns all tiles
     }
-
 }
 
 const map = new Map();
